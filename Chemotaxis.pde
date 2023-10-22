@@ -1,7 +1,7 @@
 Walker[] colony;
 void setup(){
   size(500,500);
-  colony = new Walker[100];
+  colony = new Walker[250];
   for(int i = 0; i < colony.length; i++){
     colony[i] = new Walker();
   }
@@ -15,7 +15,7 @@ void draw(){
   }
 }
 
-void mousePressed()
+void mouseDragged()
 {
   for(int i = 0; i < colony.length; i++){
     colony[i].cool();
@@ -31,25 +31,20 @@ class Walker{
     if(myX >= 480 || myY >= 480 || myX <= 0 || myY <= 0){
       myX = myY = 250;
     } else{
-      myX = myX + (int)(Math.random()*30)-15;
-      myY = myY + (int)(Math.random()*30)-15;
+      myX = myX + (int)(Math.random()*100)-50;
+      myY = myY + (int)(Math.random()*100)-50;
     }
   }
    void show(){
-     
-     //make it count slower
-     for(int i = 0; i <= 500; i++){
-       if(i > 500){
-         i = 0;
-       } else{
-           if(myX >= (250 + i) || myY >= (250 + i)){
-             fill(255,0,0);
-           } else{
-             fill(0,0,255);
-           }
-       }
-      System.out.println(i);
-     }
+    if(myX < 200 && myX > 60 && myY < 300 && myY > 100){
+       fill(239, 247, 5);
+   } else if(myX >= 250 && myY < 250){
+      fill(0,0,255);
+   } else if(myX > 250 && myY >= 250){
+       fill(255,0,0);
+   } else{
+      fill(255,255,255);
+   }
       ellipse(myX,myY,30,30);
     }
    void cool(){
